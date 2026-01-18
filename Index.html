@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Just For Sheyeselu ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+body{
+  background: linear-gradient(120deg,#ff5f9e,#ff9a9e,#fad0c4);
+  min-height:100vh;
+  overflow-x:hidden;
+  color:white;
+  text-align:center;
+}
+.section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+h1{font-size:2.3em;margin-bottom:15px;}
+p{font-size:1.1em;line-height:1.6;}
+
+.btn{
+  margin-top:25px;
+  padding:12px 28px;
+  border:none;
+  border-radius:30px;
+  background:#fff;
+  color:#ff4f8b;
+  font-weight:bold;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.hidden{display:none}
+
+/* hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  animation:float 6s linear infinite;
+}
+@keyframes float{
+  0%{transform:translateY(0);opacity:1}
+  100%{transform:translateY(-110vh);opacity:0}
+}
+
+/* scratch */
+#scratchBox{
+  width:280px;
+  height:160px;
+  background:#111;
+  border-radius:15px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-top:20px;
+  cursor:pointer;
+}
+#scratchCover{
+  position:absolute;
+  width:280px;
+  height:160px;
+  background:#aaa;
+  border-radius:15px;
+}
+#scratchText{
+  color:#fff;
+  padding:15px;
+  z-index:1;
+}
+
+/* images */
+.photos img{
+  width:90%;
+  max-width:300px;
+  border-radius:20px;
+  margin:10px;
+  box-shadow:0 15px 30px rgba(0,0,0,.3);
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC (rename file without spaces) -->
+<audio id="bgMusic" loop>
+  <source src="romantic.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="section" id="page1">
+  <h1>Welcome 💖</h1>
+  <p>Is duniya ke sabse pyaare insaan ke liye</p>
+  <button class="btn" onclick="playMusic(); nextPage(2)">Next 🤭</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="section hidden" id="page2">
+  <h1>Scratch Card 🎁</h1>
+
+  <div id="scratchBox" onclick="scratch()">
+    <div id="scratchText">
+      Oohho scratch ho gaya 😚<br><br>
+      Aap bohot cute lag rahe ho,<br>
+      mann kar raha hai ek puchi de du 💋
+    </div>
+    <div id="scratchCover"></div>
+  </div>
+
+  <button class="btn" onclick="nextPage(3)">Ale pyaare insan aage chalo 🤭</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="section hidden" id="page3">
+  <h1>For You Sheyeselu 🐼💞</h1>
+  <div class="photos">
+    <img src="IMG-20260118-WA0001.jpg">
+    <img src="IMG-20260118-WA0002.jpg">
+    <img src="IMG-20260118-WA0003.jpg">
+  </div>
+  <p>Gift pasand aaya pyaare insan? 🥹</p>
+  <button class="btn" onclick="nextPage(4)">Aur aage ❤️</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="section hidden" id="page4">
+  <h1>My Heart 💖</h1>
+  <p>
+    Sheyeselu,<br><br>
+    Tum meri zindagi ka wo hissa ho jahan se har khushi shuru hoti hai.
+    Tumhari ek muskaan meri saari thakaan mita deti hai.
+    Tum meri aadat ho, meri dua ho,
+    meri sabse khoobsurat feeling ho.
+    Tum meri duniya ho ❤️
+  </p>
+</div>
+
+<script>
+function nextPage(n){
+  document.querySelectorAll('.section').forEach(s=>s.classList.add('hidden'));
+  document.getElementById('page'+n).classList.remove('hidden');
+}
+
+function playMusic(){
+  document.getElementById("bgMusic").play();
+}
+
+function scratch(){
+  document.getElementById("scratchCover").style.display="none";
+}
+
+/* hearts */
+setInterval(()=>{
+  let h=document.createElement('div');
+  h.className='heart';
+  h.innerHTML='❤️';
+  h.style.left=Math.random()*100+'vw';
+  h.style.fontSize=(15+Math.random()*20)+'px';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},400);
+</script>
+
+</body>
+</html>
